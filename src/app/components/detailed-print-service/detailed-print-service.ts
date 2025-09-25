@@ -1,4 +1,4 @@
-import { Component, input, OnInit, output } from '@angular/core';
+import { AfterViewInit, Component, input, OnInit, output, ViewChild, ViewContainerRef } from '@angular/core';
 import { Service, SideBarItem } from '../../app';
 
 @Component({
@@ -7,15 +7,56 @@ import { Service, SideBarItem } from '../../app';
   templateUrl: './detailed-print-service.html',
   styleUrl: './detailed-print-service.css'
 })
-export class DetailedPrintService implements OnInit{
+export class DetailedPrintService implements OnInit, AfterViewInit {
+  @ViewChild('dynamicContent', { read: ViewContainerRef, static: false })
+  dynamicContent!: ViewContainerRef;
+
   service = input<Service | null>(null);
 
   activeSideBarItem: SideBarItem | null = null;
-  
+
   backToServicesEvent = output<void>();
-  
+
+  private isViewInitialized = false;
+  private currentComponentRef: any = null;
+
+  loadSidebarComponent(sidebarItem: SideBarItem) {
+    if (!this.isViewInitialized || !this.dynamicContent) {
+      return;
+    }
+
+
+    try {
+      // Clean up previous component
+      if (this.currentComponentRef) {
+        this.currentComponentRef.destroy();
+      }
+
+      this.dynamicContent.clear();
+
+      // Create the new component using the component class directly
+      this.currentComponentRef = this.dynamicContent.createComponent(sidebarItem.component);
+
+      console.log(`Successfully loaded: ${sidebarItem.name}`);
+
+    } catch (error) {
+      console.error('Error loading sidebar component:', error);
+    }
+  }
+
+  // Might custom event listener to listen to changes from the child side bar items components
+
   ngOnInit(): void {
     this.activeSideBarItem = this.service()?.sideBarItems[0] || null;
+  }
+
+  ngAfterViewInit() {
+    this.isViewInitialized = true;
+
+    // Load first sidebar item by default
+    if (this.service()?.sideBarItems.length) {
+      this.loadSidebarComponent(this.service()!.sideBarItems[0]);
+    }
   }
 
   backToServices() {
@@ -23,7 +64,12 @@ export class DetailedPrintService implements OnInit{
   }
 
   selectSideBarItem(sItem: SideBarItem) {
+    if (this.activeSideBarItem?.name === sItem.name) {
+      return;
+    }
+    
     this.activeSideBarItem = sItem;
+    this.loadSidebarComponent(sItem);
   }
 }
 

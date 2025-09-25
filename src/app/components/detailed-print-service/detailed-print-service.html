@@ -17,16 +17,18 @@
         <ul class="flex flex-col gap-2">
             <!-- Change track later -->
             <!-- Add alt for icon later & to interface -->
-            @for (sideBarItem of service()?.sideBarItems; track sideBarItem.componentName) {
-                @if (sideBarItem.componentName === activeSideBarItem?.componentName) {
-                    <li (click)="selectSideBarItem(sideBarItem)" class="cursor-pointer py-2 px-4 text-white bg-black rounded-md text-sm flex items-center gap-2 font-medium"><img src="{{ sideBarItem.lightIcon }}" alt="" class="h-4 w-4">{{ sideBarItem.name }}</li>
+            @for (sideBarItem of service()?.sideBarItems; track sideBarItem.component) {
+                <!-- Switch this in the future to something more unique other than name & interface -->
+                @if (sideBarItem.name === activeSideBarItem?.name) {
+                    <li (click)="selectSideBarItem(sideBarItem)" class="cursor-pointer py-2 px-4 text-white bg-black rounded-md text-sm flex items-center gap-3 font-medium"><img src="{{ sideBarItem.lightIcon }}" alt="" class="h-4 w-4">{{ sideBarItem.name }}</li>
                 } @else {
-                    <li (click)="selectSideBarItem(sideBarItem)" class="cursor-pointer py-2 px-4 text-black rounded-md text-sm flex items-center gap-2 font-medium"><img src="{{ sideBarItem.darkIcon }}" alt="" class="h-4 w-4">{{ sideBarItem.name }}</li>
+                    <li (click)="selectSideBarItem(sideBarItem)" class="cursor-pointer py-2 px-4 text-black rounded-md text-sm flex items-center gap-3 font-medium"><img src="{{ sideBarItem.darkIcon }}" alt="" class="h-4 w-4">{{ sideBarItem.name }}</li>
                 }
             }
         </ul>
     </aside>
 
-    <div class="overflow-y-auto w-full">
+    <div class="overflow-y-auto w-full p-6">
+        <ng-container #dynamicContent></ng-container>
     </div>
 </div>

@@ -7,7 +7,7 @@ export interface SideBarItem {
   name: string;
   lightIcon: string;
   darkIcon: string;
-  componentName: string;
+  component: any;
 }
 
 export interface Service {
@@ -19,7 +19,7 @@ export interface Service {
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ListOfPrintServices, DetailedPrintService],
+  imports: [ListOfPrintServices, DetailedPrintService],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

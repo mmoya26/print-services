@@ -1,5 +1,7 @@
 import { Component, output } from '@angular/core';
 import { Service } from '../../app';
+import { RecipientList } from '../print-services/recipient-list/recipient-list';
+import { ShippingAddress } from '../print-services/shipping-address/shipping-address';
 
 @Component({
   selector: 'app-list-of-print-services',
@@ -18,13 +20,13 @@ export class ListOfPrintServices {
           name: 'Recipients',
           lightIcon: 'assets/users-w.svg',
           darkIcon: 'assets/users.svg',
-          componentName: 'BulkShippingOverviewComponent'
+          component: RecipientList
         },
         {
           name: 'Shipping Address',
           lightIcon: 'assets/map-pin-w.svg',
           darkIcon: 'assets/map-pin.svg',
-          componentName: 'BulkShippingSettingsComponent'
+          component: ShippingAddress
         }
       ]
     },
@@ -37,13 +39,13 @@ export class ListOfPrintServices {
           name: 'Overview',
           lightIcon: 'assets/overview-w.svg',
           darkIcon: 'assets/overview.svg',
-          componentName: 'InsertsOverviewComponent'
+          component: 'InsertsOverviewComponent'
         },
         {
           name: 'Settings',
           lightIcon: 'assets/settings-w.svg',
           darkIcon: 'assets/settings.svg',
-          componentName: 'InsertsSettingsComponent'
+          component: 'InsertsSettingsComponent'
         }
       ]
     },
@@ -56,13 +58,13 @@ export class ListOfPrintServices {
           name: 'Overview',
           lightIcon: 'assets/overview-w.svg',
           darkIcon: 'assets/overview.svg',
-          componentName: 'HouseholdingOverviewComponent'
+          component: 'HouseholdingOverviewComponent'
         },
         {
           name: 'Settings',
           lightIcon: 'assets/settings-w.svg',
           darkIcon: 'assets/settings.svg',
-          componentName: 'HouseholdingSettingsComponent'
+          component: 'HouseholdingSettingsComponent'
         }
       ]
     },
@@ -75,13 +77,13 @@ export class ListOfPrintServices {
           name: 'Overview',
           lightIcon: 'assets/overview-w.svg',
           darkIcon: 'assets/overview.svg',
-          componentName: 'AlternateReturnAddressOverviewComponent'
+          component: 'AlternateReturnAddressOverviewComponent'
         },
         {
           name: 'Settings',
           lightIcon: 'assets/settings-w.svg',
           darkIcon: 'assets/settings.svg',
-          componentName: 'AlternateReturnAddressSettingsComponent'
+          component: 'AlternateReturnAddressSettingsComponent'
         }
       ]
     },
@@ -94,13 +96,13 @@ export class ListOfPrintServices {
           name: 'Overview',
           lightIcon: 'assets/overview-w.svg',
           darkIcon: 'assets/overview.svg',
-          componentName: 'PrintExclusionsOverviewComponent'
+          component: 'PrintExclusionsOverviewComponent'
         },
         {
           name: 'Settings',
           lightIcon: 'assets/settings-w.svg',
           darkIcon: 'assets/settings.svg',
-          componentName: 'PrintExclusionsSettingsComponent'
+          component: 'PrintExclusionsSettingsComponent'
         }
       ]
     },
@@ -113,13 +115,13 @@ export class ListOfPrintServices {
           name: 'Overview',
           lightIcon: 'assets/overview-w.svg',
           darkIcon: 'assets/overview.svg',
-          componentName: 'EnvelopeCustomizationOverviewComponent'
+          component: 'EnvelopeCustomizationOverviewComponent'
         },
         {
           name: 'Settings',
           lightIcon: 'assets/settings-w.svg',
           darkIcon: 'assets/settings.svg',
-          componentName: 'EnvelopeCustomizationSettingsComponent'
+          component: 'EnvelopeCustomizationSettingsComponent'
         }
       ]
     },
