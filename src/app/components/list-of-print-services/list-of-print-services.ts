@@ -1,0 +1,133 @@
+import { Component, output } from '@angular/core';
+import { Service } from '../../app';
+
+@Component({
+  selector: 'app-list-of-print-services',
+  imports: [],
+  templateUrl: './list-of-print-services.html',
+  styleUrl: './list-of-print-services.css'
+})
+export class ListOfPrintServices {
+  protected readonly services: Service[] = [
+    {
+      name: 'Bulk Shipping',
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis corrupti delectus atque quos fuga officiis.',
+      icon: 'assets/truck.svg',
+      sideBarItems: [
+        {
+          name: 'Recipients',
+          lightIcon: 'assets/users-w.svg',
+          darkIcon: 'assets/users.svg',
+          componentName: 'BulkShippingOverviewComponent'
+        },
+        {
+          name: 'Shipping Address',
+          lightIcon: 'assets/map-pin-w.svg',
+          darkIcon: 'assets/map-pin.svg',
+          componentName: 'BulkShippingSettingsComponent'
+        }
+      ]
+    },
+    {
+      name: 'Inserts',
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis corrupti delectus atque quos fuga officiis.',
+      icon: 'assets/file-text.svg',
+      sideBarItems: [
+        {
+          name: 'Overview',
+          lightIcon: 'assets/overview-w.svg',
+          darkIcon: 'assets/overview.svg',
+          componentName: 'InsertsOverviewComponent'
+        },
+        {
+          name: 'Settings',
+          lightIcon: 'assets/settings-w.svg',
+          darkIcon: 'assets/settings.svg',
+          componentName: 'InsertsSettingsComponent'
+        }
+      ]
+    },
+    {
+      name: 'Householding',
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis corrupti delectus atque quos fuga officiis.',
+      icon: 'assets/home.svg',
+      sideBarItems: [
+        {
+          name: 'Overview',
+          lightIcon: 'assets/overview-w.svg',
+          darkIcon: 'assets/overview.svg',
+          componentName: 'HouseholdingOverviewComponent'
+        },
+        {
+          name: 'Settings',
+          lightIcon: 'assets/settings-w.svg',
+          darkIcon: 'assets/settings.svg',
+          componentName: 'HouseholdingSettingsComponent'
+        }
+      ]
+    },
+    {
+      name: 'Alternate Return Address',
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis corrupti delectus atque quos fuga officiis.',
+      icon: 'assets/map-pin.svg',
+      sideBarItems: [
+        {
+          name: 'Overview',
+          lightIcon: 'assets/overview-w.svg',
+          darkIcon: 'assets/overview.svg',
+          componentName: 'AlternateReturnAddressOverviewComponent'
+        },
+        {
+          name: 'Settings',
+          lightIcon: 'assets/settings-w.svg',
+          darkIcon: 'assets/settings.svg',
+          componentName: 'AlternateReturnAddressSettingsComponent'
+        }
+      ]
+    },
+    {
+      name: 'Print Exclusions',
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis corrupti delectus atque quos fuga officiis.',
+      icon: 'assets/gear.svg',
+      sideBarItems: [
+        {
+          name: 'Overview',
+          lightIcon: 'assets/overview-w.svg',
+          darkIcon: 'assets/overview.svg',
+          componentName: 'PrintExclusionsOverviewComponent'
+        },
+        {
+          name: 'Settings',
+          lightIcon: 'assets/settings-w.svg',
+          darkIcon: 'assets/settings.svg',
+          componentName: 'PrintExclusionsSettingsComponent'
+        }
+      ]
+    },
+    {
+      name: 'Envelope Customization',
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis corrupti delectus atque quos fuga officiis.',
+      icon: 'assets/mail.svg',
+      sideBarItems: [
+        {
+          name: 'Overview',
+          lightIcon: 'assets/overview-w.svg',
+          darkIcon: 'assets/overview.svg',
+          componentName: 'EnvelopeCustomizationOverviewComponent'
+        },
+        {
+          name: 'Settings',
+          lightIcon: 'assets/settings-w.svg',
+          darkIcon: 'assets/settings.svg',
+          componentName: 'EnvelopeCustomizationSettingsComponent'
+        }
+      ]
+    },
+  ];
+
+  editServiceEvent = output<Service>();
+
+  editService(service: Service) {
+    this.editServiceEvent.emit(service);
+  }
+}

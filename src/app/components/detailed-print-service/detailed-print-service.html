@@ -1,0 +1,32 @@
+<!-- Header Section -->
+<div class="p-6 flex flex-col gap-2 border-b border-[#e4e4e7] bg-gray-50 rounded-tl-lg rounded-tr-lg">
+    <button class="w-fit flex items-center justify-center gap-2 text-sm font-semibold cursor-pointer mb-3" (click)="backToServices()">
+        <img src="assets/chevron-left.svg" alt="chevron left icon" class="h-5">
+        Back to Services
+    </button>
+    <div class="flex items-center gap-2">
+        <img src="{{service()?.icon ?? 'assets/gear.svg'}}" alt="Settings" class="h-6 w-6"/>
+        <h3 class="font-semibold text-gray-900 text-2xl">{{ service()?.name ?? 'Undefined Service'}}</h3>
+    </div>
+    <h4 class=" text-sm text-gray-600">{{ service()?.description ?? 'No description available' }}</h4>
+</div>
+
+<!-- Main Content -->
+<div class="flex h-[calc(90vh-120px)]">
+    <aside class="h-full border-r border-[#e4e4e7] bg-gray-50 p-4 w-64">
+        <ul class="flex flex-col gap-2">
+            <!-- Change track later -->
+            <!-- Add alt for icon later & to interface -->
+            @for (sideBarItem of service()?.sideBarItems; track sideBarItem.componentName) {
+                @if (sideBarItem.componentName === activeSideBarItem?.componentName) {
+                    <li (click)="selectSideBarItem(sideBarItem)" class="cursor-pointer py-2 px-4 text-white bg-black rounded-md text-sm flex items-center gap-2 font-medium"><img src="{{ sideBarItem.lightIcon }}" alt="" class="h-4 w-4">{{ sideBarItem.name }}</li>
+                } @else {
+                    <li (click)="selectSideBarItem(sideBarItem)" class="cursor-pointer py-2 px-4 text-black rounded-md text-sm flex items-center gap-2 font-medium"><img src="{{ sideBarItem.darkIcon }}" alt="" class="h-4 w-4">{{ sideBarItem.name }}</li>
+                }
+            }
+        </ul>
+    </aside>
+
+    <div class="overflow-y-auto w-full">
+    </div>
+</div>
