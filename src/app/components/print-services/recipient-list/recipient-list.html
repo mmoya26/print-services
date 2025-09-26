@@ -1,1 +1,38 @@
-<p>recipient-list works!</p>
+<h3 class="text-lg font-semibold text-gray-900">Recipient Management</h3>
+
+<div
+    class="rounded-lg bg-card text-card-foreground  border-dashed border-2 border-gray-300 hover:border-gray-400 transition-colors mt-6">
+    <div class="p-6 flex flex-col justify-center items-center gap-1">
+        <!-- Upload Icon -->
+        <div class="w-12 h-12 bg-gray-100 flex items-center justify-center rounded-full">
+            <img src="assets/upload.svg" class="w-6 h-6" alt="Upload Icon">
+        </div>
+
+        <!-- Titles -->
+        <h4 class="font-medium text-gray-900">Upload Recipient List</h4>
+        <p class="text-sm text-gray-500">Upload a CSV file with recipient information</p>
+
+        <!-- Buttons -->
+        <div class="m-3 flex gap-3">
+            <label
+                class="flex justify-center items-center gap-3 text-sm rounded-md px-3 h-9 font-medium cursor-pointer ring-offset-1 ring-1 ring-gray-300 hover:ring-gray-400 transition-colors">
+                <img src="assets/upload-d.svg" class=" h-4" alt="Upload Icon" />
+                <input type="file" hidden />
+                Choose a file
+            </label>
+
+            <a href="assets/template/test.txt"
+                class="flex justify-center items-center gap-3 text-sm rounded-md px-3 h-9 font-medium cursor-pointer" download="test.txt">
+                <img src="assets/download.svg" class="w-4 h-4" alt="Download Icon">
+                Download Template
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="mt-6">
+    <label for="manual-entry" class="text-sm font-medium">Enter Recipients Manually</label>
+    <textarea
+        class="flex w-full rounded-md border border-gray-300 border-input px-3 py-2 mt-4 text-sm min-h-[120px] text-gray-500"
+        id="manual-entry" placeholder="Enter recipient information, one per line..."></textarea>
+</div>

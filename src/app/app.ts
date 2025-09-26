@@ -15,16 +15,26 @@ export interface Service {
   description: string;
   icon: string;
   sideBarItems: SideBarItem[];
+  category: ServiceCategory;
 }
 
+// ServiceType and ServiceCategory enums can be refactored into one interface if needed
 export enum ServiceType {
   BulkShipping = 'BulkShipping',
   Inserts = 'Inserts',
   Householding = 'Householding',
   AlternateReturnAddress = 'AlternateReturnAddress',
   PrintExclusions = 'PrintExclusions', // For testing purposes only
-  EnvelopeCustomization = 'EnvelopeCustomization' // For testing purposes only
+  EnvelopeCustomization = 'EnvelopeCustomization', // For testing purposes only
+  PriorityProcessing = 'PriorityProcessing', // For testing purposes only
+  CertifiedMail = 'CertifiedMail' // For testing purposes only
 }
+
+export enum ServiceCategory {
+  Standard = 'Standard',
+  Premium = 'Premium'
+}
+
 
 @Component({
   selector: 'app-root',

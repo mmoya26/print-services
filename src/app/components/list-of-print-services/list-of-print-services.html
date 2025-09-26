@@ -11,14 +11,37 @@
         service to customize its settings.</p>
 
     <!-- Standard Services -->
-    <div class="">
+    <div>
         <h4 class="font-medium text-gray-900">Standard Services</h4>
 
         <!-- Standard services cards container -->
         <div>
             <div class="flex flex-wrap gap-4 mt-4">
-                <!-- Update track in the future maybe? -->
-                @for (s of services; track s.key) {
+                @for (s of standardServices; track s.key) {
+                    <div class="w-full md:basis-[calc(50%-0.5rem)] border border-gray-300 rounded-lg p-4 hover:shadow-lg transition-shadow cursor-pointer flex justify-center gap-3"
+                        (click)="editService(s)">
+                        <div
+                            class="w-10 h-10 bg-white border border-[#e4e4e7] rounded-lg flex items-center justify-center flex-shrink-0">
+                            <img src="{{ s.icon }}" alt="Truck Icon" class="h-[20px] w-[20px] text-gray-600" />
+                        </div>
+                        <div>
+                            <h5 class="font-medium text-gray-900 mb-2">{{s.name}}</h5>
+                            <p class="text-sm text-gray-600">{{s.description}}</p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Premium Services -->
+    <div class="mt-8">
+        <h4 class="font-medium text-gray-900">Premium Services</h4>
+
+        <!-- Premium services cards container -->
+        <div>
+            <div class="flex flex-wrap gap-4 mt-4">
+                @for (s of premiumServices; track s.key) {
                     <div class="w-full md:basis-[calc(50%-0.5rem)] border border-gray-300 rounded-lg p-4 hover:shadow-lg transition-shadow cursor-pointer flex justify-center gap-3"
                         (click)="editService(s)">
                         <div

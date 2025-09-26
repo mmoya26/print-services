@@ -1,5 +1,5 @@
-import { Component, output } from '@angular/core';
-import { Service, ServiceType } from '../../app';
+import { Component, OnInit, output } from '@angular/core';
+import { Service, ServiceCategory, ServiceType } from '../../app';
 import { RecipientList } from '../print-services/recipient-list/recipient-list';
 import { ShippingAddress } from '../print-services/shipping-address/shipping-address';
 
@@ -9,7 +9,7 @@ import { ShippingAddress } from '../print-services/shipping-address/shipping-add
   templateUrl: './list-of-print-services.html',
   styleUrl: './list-of-print-services.css'
 })
-export class ListOfPrintServices {
+export class ListOfPrintServices implements OnInit {
   protected readonly services: Service[] = [
     {
       key: ServiceType.BulkShipping,
@@ -29,7 +29,8 @@ export class ListOfPrintServices {
           darkIcon: 'assets/map-pin.svg',
           component: ShippingAddress
         }
-      ]
+      ],
+      category: ServiceCategory.Standard
     },
     {
       key: ServiceType.Inserts,
@@ -49,7 +50,8 @@ export class ListOfPrintServices {
           darkIcon: 'assets/settings.svg',
           component: 'InsertsSettingsComponent'
         }
-      ]
+      ],
+      category: ServiceCategory.Standard
     },
     {
       key: ServiceType.Householding,
@@ -69,7 +71,8 @@ export class ListOfPrintServices {
           darkIcon: 'assets/settings.svg',
           component: 'HouseholdingSettingsComponent'
         }
-      ]
+      ],
+      category: ServiceCategory.Standard
     },
     {
       key: ServiceType.AlternateReturnAddress,
@@ -89,7 +92,8 @@ export class ListOfPrintServices {
           darkIcon: 'assets/settings.svg',
           component: 'AlternateReturnAddressSettingsComponent'
         }
-      ]
+      ],
+      category: ServiceCategory.Standard
     },
     {
       key: ServiceType.PrintExclusions,
@@ -109,7 +113,8 @@ export class ListOfPrintServices {
           darkIcon: 'assets/settings.svg',
           component: 'PrintExclusionsSettingsComponent'
         }
-      ]
+      ],
+      category: ServiceCategory.Standard
     },
     {
       key: ServiceType.EnvelopeCustomization,
@@ -129,11 +134,63 @@ export class ListOfPrintServices {
           darkIcon: 'assets/settings.svg',
           component: 'EnvelopeCustomizationSettingsComponent'
         }
-      ]
+      ],
+      category: ServiceCategory.Standard
     },
+    {
+      key: ServiceType.PriorityProcessing,
+      name: 'Priority Processing',
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis corrupti delectus atque quos fuga officiis.',
+      icon: 'assets/box.svg',
+      sideBarItems: [
+        {
+          name: 'Overview',
+          lightIcon: 'assets/overview-w.svg',
+          darkIcon: 'assets/overview.svg',
+          component: 'PriorityProcessingOverviewComponent'
+        },
+        {
+          name: 'Settings',
+          lightIcon: 'assets/settings-w.svg',
+          darkIcon: 'assets/settings.svg',
+          component: 'PriorityProcessingSettingsComponent'
+        }
+      ],
+      category: ServiceCategory.Premium
+    },
+    {
+      key: ServiceType.CertifiedMail,
+      name: 'Certified Mail',
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis corrupti delectus atque quos fuga officiis.',
+      icon: 'assets/mail.svg',
+      sideBarItems: [
+        {
+          name: 'Overview',
+          lightIcon: 'assets/overview-w.svg',
+          darkIcon: 'assets/overview.svg',
+          component: 'CertifiedMailOverviewComponent'
+        },
+        {
+          name: 'Settings',
+          lightIcon: 'assets/settings-w.svg',
+          darkIcon: 'assets/settings.svg',
+          component: 'CertifiedMailSettingsComponent'
+        }
+      ],
+      category: ServiceCategory.Premium
+    }
   ];
 
   editServiceEvent = output<Service>();
+
+  premiumServices: Service[] = [];
+  standardServices: Service[] = [];
+
+
+  ngOnInit() {
+    this.premiumServices = this.services.filter(s => s.category === ServiceCategory.Premium);
+    this.standardServices = this.services.filter(s => s.category === ServiceCategory.Standard);
+  }
 
   editService(service: Service) {
     this.editServiceEvent.emit(service);
