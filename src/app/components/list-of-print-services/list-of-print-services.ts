@@ -1,5 +1,5 @@
 import { Component, output } from '@angular/core';
-import { Service } from '../../app';
+import { Service, ServiceType } from '../../app';
 import { RecipientList } from '../print-services/recipient-list/recipient-list';
 import { ShippingAddress } from '../print-services/shipping-address/shipping-address';
 
@@ -12,6 +12,7 @@ import { ShippingAddress } from '../print-services/shipping-address/shipping-add
 export class ListOfPrintServices {
   protected readonly services: Service[] = [
     {
+      key: ServiceType.BulkShipping,
       name: 'Bulk Shipping',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis corrupti delectus atque quos fuga officiis.',
       icon: 'assets/truck.svg',
@@ -31,6 +32,7 @@ export class ListOfPrintServices {
       ]
     },
     {
+      key: ServiceType.Inserts,
       name: 'Inserts',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis corrupti delectus atque quos fuga officiis.',
       icon: 'assets/file-text.svg',
@@ -50,6 +52,7 @@ export class ListOfPrintServices {
       ]
     },
     {
+      key: ServiceType.Householding,
       name: 'Householding',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis corrupti delectus atque quos fuga officiis.',
       icon: 'assets/home.svg',
@@ -69,6 +72,7 @@ export class ListOfPrintServices {
       ]
     },
     {
+      key: ServiceType.AlternateReturnAddress,
       name: 'Alternate Return Address',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis corrupti delectus atque quos fuga officiis.',
       icon: 'assets/map-pin.svg',
@@ -88,6 +92,7 @@ export class ListOfPrintServices {
       ]
     },
     {
+      key: ServiceType.PrintExclusions,
       name: 'Print Exclusions',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis corrupti delectus atque quos fuga officiis.',
       icon: 'assets/gear.svg',
@@ -107,6 +112,7 @@ export class ListOfPrintServices {
       ]
     },
     {
+      key: ServiceType.EnvelopeCustomization,
       name: 'Envelope Customization',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis corrupti delectus atque quos fuga officiis.',
       icon: 'assets/mail.svg',

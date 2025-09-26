@@ -1,5 +1,4 @@
-import { AfterViewInit, Component, OnInit, signal, ViewChild, ViewContainerRef } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, signal } from '@angular/core';
 import { ListOfPrintServices } from './components/list-of-print-services/list-of-print-services';
 import { DetailedPrintService } from './components/detailed-print-service/detailed-print-service';
 
@@ -11,10 +10,20 @@ export interface SideBarItem {
 }
 
 export interface Service {
+  key: ServiceType;
   name: string;
   description: string;
   icon: string;
   sideBarItems: SideBarItem[];
+}
+
+export enum ServiceType {
+  BulkShipping = 'BulkShipping',
+  Inserts = 'Inserts',
+  Householding = 'Householding',
+  AlternateReturnAddress = 'AlternateReturnAddress',
+  PrintExclusions = 'PrintExclusions', // For testing purposes only
+  EnvelopeCustomization = 'EnvelopeCustomization' // For testing purposes only
 }
 
 @Component({
@@ -24,9 +33,6 @@ export interface Service {
   styleUrl: './app.css'
 })
 export class App {
-  @ViewChild('dynamicContent', { read: ViewContainerRef, static: false })
-  dynamicContent!: ViewContainerRef;
-
   serviceOpened = false;
   
   selectedService = signal<Service | null>(null);

@@ -17,7 +17,8 @@
         <!-- Standard services cards container -->
         <div>
             <div class="flex flex-wrap gap-4 mt-4">
-                @for (s of services; track s.name) {
+                <!-- Update track in the future maybe? -->
+                @for (s of services; track s.key) {
                     <div class="w-full md:basis-[calc(50%-0.5rem)] border border-gray-300 rounded-lg p-4 hover:shadow-lg transition-shadow cursor-pointer flex justify-center gap-3"
                         (click)="editService(s)">
                         <div
