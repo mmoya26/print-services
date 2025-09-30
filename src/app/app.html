@@ -2,7 +2,7 @@
   <!-- Card -->
   <div class="bg-white w-[1150px] h-[90vh] mx-auto rounded-lg overflow-hidden">
     @if (serviceOpened) {
-      <app-detailed-print-service [service]="selectedService()" (backToServicesEvent)="serviceOpened = false"></app-detailed-print-service>
+      <app-detailed-print-service [service]="selectedService()" (backToServicesEvent)="resetService()"></app-detailed-print-service>
     } @else {
       <app-list-of-print-services (editServiceEvent)="editService($event)"></app-list-of-print-services>
     }

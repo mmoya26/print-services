@@ -1,12 +1,14 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { ListOfPrintServices } from './components/list-of-print-services/list-of-print-services';
 import { DetailedPrintService } from './components/detailed-print-service/detailed-print-service';
+import { PrintServices } from './services/print-services';
 
 export interface SideBarItem {
   name: string;
   lightIcon: string;
   darkIcon: string;
   component: any;
+  processing: boolean;
 }
 
 export interface Service {
@@ -47,8 +49,16 @@ export class App {
   
   selectedService = signal<Service | null>(null);
 
+  printService = inject(PrintServices);
+
   editService(service: Service) {
     this.serviceOpened = true;
     this.selectedService.set(service);
+  }
+
+  resetService() {
+    this.serviceOpened = false;
+    this.selectedService.set(null);
+    this.printService.clear();
   }
 }

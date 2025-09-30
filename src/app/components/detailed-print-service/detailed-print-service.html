@@ -16,26 +16,24 @@
 <div class="flex h-[calc(90vh-120px)]">
 
     <!-- Side Bar -->
-    <aside class="h-full border-r border-[#e4e4e7] bg-gray-50 p-4 w-64">
+    <aside class="h-full border-r border-[#e4e4e7] bg-gray-50 p-4 w-72">
         <div class="h-[calc(90vh-180px)] flex flex-col">
             <ul class="flex flex-col gap-2">
                 <!-- Change track later -->
                 <!-- Add alt for icon later & to interface -->
-                @for (sideBarItem of service()?.sideBarItems; track sideBarItem.component) {
-                    <!-- Switch this in the future to something more unique other than name & interface -->
-                    @if (sideBarItem.name === activeSideBarItem?.name) {
+                @for (sideBarItem of sideBarItems(); track sideBarItem.component) {
                     <li (click)="selectSideBarItem(sideBarItem)"
-                        class="cursor-pointer py-2 px-4 text-white bg-black rounded-md text-sm flex items-center gap-3 font-medium">
-                        <img src="{{ sideBarItem.lightIcon }}" alt="" class="h-4 w-4">{{ sideBarItem.name }}</li>
-                    } @else {
-                    <li (click)="selectSideBarItem(sideBarItem)"
-                        class="cursor-pointer py-2 px-4 text-black rounded-md text-sm flex items-center gap-3 font-medium">
-                        <img src="{{ sideBarItem.darkIcon }}" alt="" class="h-4 w-4">{{ sideBarItem.name }}</li>
-                    }
+                        [class]="'cursor-pointer py-2 px-4 rounded-md text-sm flex items-center gap-3 font-medium ' + (sideBarItem.name === activeSideBarItem?.name ? 'text-white bg-black' : 'text-black bg-transparent')">
+                        <img [src]="sideBarItem.name === activeSideBarItem?.name ? sideBarItem.lightIcon : sideBarItem?.darkIcon" alt="" 
+                        class="h-4 w-4">{{ sideBarItem.name }} 
+
+                        <i [class]="'pi pi-spin pi-spinner' + (sideBarItem.processing ? '' : ' hidden')"></i>
+                    </li>
                 }
             </ul>
 
-            <button class=" cursor-pointer py-2 px-4 text-white bg-black rounded-md text-sm mt-auto">Activate Service</button>
+            <button class="cursor-pointer py-2 px-4 text-white bg-black rounded-md text-sm font-semibold mt-auto">Activate
+                Service</button>
         </div>
     </aside>
 

@@ -15,9 +15,10 @@
         <!-- Buttons -->
         <div class="m-3 flex gap-3">
             <label
+                (click)="uploadFile()"
                 class="flex justify-center items-center gap-3 text-sm rounded-md px-3 h-9 font-medium cursor-pointer ring-offset-1 ring-1 ring-gray-300 hover:ring-gray-400 transition-colors">
                 <img src="assets/upload-d.svg" class=" h-4" alt="Upload Icon" />
-                <input type="file" hidden />
+                <!-- <input type="file" hidden /> -->
                 Choose a file
             </label>
 
