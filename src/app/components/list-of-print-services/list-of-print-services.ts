@@ -14,12 +14,10 @@ export class ListOfPrintServices implements OnInit {
 
   premiumServices: Service[] = [];
   standardServices: Service[] = [];
-  activeServices: ServiceType[] | null = null;
 
   ngOnInit() {
     this.premiumServices = this.printService.services.filter(s => s.category === ServiceCategory.Premium);
     this.standardServices = this.printService.services.filter(s => s.category === ServiceCategory.Standard);
-    this.activeServices = this.printService.activeServices$();
   }
 
   editService(service: Service) {
@@ -27,6 +25,6 @@ export class ListOfPrintServices implements OnInit {
   }
 
   isServiceActive(service: Service): boolean {
-    return this.activeServices?.includes(service.key) || false;
+    return this.printService.activeServices$().includes(service.key);
   }
 }

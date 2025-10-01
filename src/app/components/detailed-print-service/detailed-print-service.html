@@ -10,7 +10,7 @@
         <h3 class="font-semibold text-gray-900 text-2xl">{{ service()?.name ?? 'Undefined Service'}}</h3>
 
         @if (printService.isServiceActive(service()!)) {
-            <p class="bg-emerald-200 text-emerald-700 text-xs px-2 py-1 rounded-full font-medium">Active</p>
+            <p class="bg-emerald-100 text-emerald-600 inset-ring inset-ring-green-600/30 text-xs px-2 py-1 rounded-full font-medium">Active</p>
         }
     </div>
     <h4 class=" text-sm text-gray-600">{{ service()?.description ?? 'No description available' }}</h4>
@@ -38,7 +38,7 @@
 
             <div class="flex flex-col mt-auto gap-4">
                 @if (printService.isServiceActive(service()!)) {
-                    <button (click)="deactivateService()" class="border border-gray-300 py-2 px-4 rounded-md text-sm text-gray-600 cursor-pointer">Deactive Service</button>
+                    <button (click)="deactivateService()" class="border border-red-300 text-red-400 font-medium py-2 px-4 rounded-md text-sm cursor-pointer">Deactive Service</button>
                 } @else {
                     <button (click)="activateService()" class="cursor-pointer py-2 px-4 text-white bg-black rounded-md text-sm font-semibold">Activate
                     Service</button>

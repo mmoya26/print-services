@@ -2,17 +2,16 @@
 
 
 <div class="mt-6 flex flex-col gap-6">
-    <!-- Full Name & Company Name -->
-    <div class="flex gap-6 flex-wrap">
-        <div class="flex flex-col flex-1 gap-2">
-            <label for="full-name" class="text-sm font-medium">Full Name</label>
-            <input type="text" id="full-name" name="full-name" class="border border-gray-300 rounded-md pl-2 py-2" />
-        </div>
-        <div class="flex flex-col flex-1 gap-2">
-            <label for="company-name" class="text-sm font-medium">Company Name</label>
-            <input type="text" id="company-name" name="company-name"
-                class="border border-gray-300 rounded-md pl-2 py-2" />
-        </div>
+    <!-- Full Name -->
+    <div class="flex flex-col flex-1 gap-2">
+        <label for="full-name" class="text-sm font-medium">Full Name</label>
+        <input type="text" id="full-name" name="full-name" class="border border-gray-300 rounded-md pl-2 py-2" />
+    </div>
+    
+    <!-- Company Name -->
+    <div class="flex flex-col flex-1 gap-2">
+        <label for="company-name" class="text-sm font-medium">Company Name</label>
+        <input type="text" id="company-name" name="company-name" class="border border-gray-300 rounded-md pl-2 py-2" />
     </div>
 
     <!-- Street Address 1 & 2 -->
@@ -29,11 +28,11 @@
         </div>
     </div>
 
-    <!-- Country -->
+    <!-- Country & City -->
     <div class="flex gap-6 flex-wrap">
         <div class="flex flex-col flex-1 gap-2">
             <label for="Country" class="text-sm font-medium">Country</label>
-            <select  id="Country" name="Country" class="border border-gray-300 rounded-md pl-2 py-2">
+            <select id="Country" name="Country" class="border border-gray-300 rounded-md pl-2 py-2">
                 <option value="us">United States</option>
                 <option value="ca">Canada</option>
                 <option value="mx">Mexico</option>
@@ -49,6 +48,37 @@
                 <option value="br">Brazil</option>
                 <option value="za">South Africa</option>
             </select>
+        </div>
+
+        <div class="flex flex-col flex-1 gap-2">
+            <label for="city" class="text-sm font-medium">City</label>
+            <input type="text" id="city" name="city" class="border border-gray-300 rounded-md pl-2 py-2" />
+        </div>
+    </div>
+
+    <!-- State & Zip Code -->
+    <div class="flex gap-6 flex-wrap">
+        <div class="flex flex-col flex-1 gap-2">
+            <label for="state" class="text-sm font-medium">State</label>
+            <input type="text" id="state" name="state" class="border border-gray-300 rounded-md pl-2 py-2" />
+        </div>
+        <div class="flex flex-col flex-1 gap-2">
+            <label for="zip-code" class="text-sm font-medium">Zip Code</label>
+            <input type="text" id="zip-code" name="zip-code" class="border border-gray-300 rounded-md pl-2 py-2" />
+        </div>
+    </div>
+
+
+
+    <!-- Email & Phone Number -->
+    <div class="flex gap-6 flex-wrap">
+        <div class="flex flex-col flex-1 gap-2">
+            <label for="email" class="text-sm font-medium">Email</label>
+            <input type="email" id="email" name="email" class="border border-gray-300 rounded-md pl-2 py-2" />
+        </div>
+        <div class="flex flex-col flex-1 gap-2">
+            <label for="phone" class="text-sm font-medium">Phone Number</label>
+            <input type="text" id="phone" name="phone" class="border border-gray-300 rounded-md pl-2 py-2" />
         </div>
     </div>
 </div>

@@ -60,20 +60,6 @@ export class PrintServices {
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis corrupti delectus atque quos fuga officiis.',
       icon: 'assets/home.svg',
       sideBarItems: [
-        {
-          name: 'Overview',
-          lightIcon: 'assets/overview-w.svg',
-          darkIcon: 'assets/overview.svg',
-          component: 'HouseholdingOverviewComponent',
-          processing: false
-        },
-        {
-          name: 'Settings',
-          lightIcon: 'assets/settings-w.svg',
-          darkIcon: 'assets/settings.svg',
-          component: 'HouseholdingSettingsComponent',
-          processing: false
-        }
       ],
       category: ServiceCategory.Standard
     },
@@ -213,10 +199,9 @@ export class PrintServices {
     }
 
     this.activeServices.update(services => [...this.activeServices$(), serviceType]);
-    console.log(this.activeServices());
   }
 
-  deactiveteActiveService(serviceType: ServiceType) {
+  deactivateActiveService(serviceType: ServiceType) {
     this.activeServices.update(services => services.filter(s => s !== serviceType));
   }
 

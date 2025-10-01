@@ -52,8 +52,18 @@ export class App {
   printService = inject(PrintServices);
 
   editService(service: Service) {
-    this.serviceOpened = true;
-    this.selectedService.set(service);
+    if (this.doesServiceContainSideBarItems(service)) {
+      this.serviceOpened = true;
+      this.selectedService.set(service);
+      return;
+    }
+
+    if (this.printService.isServiceActive(service)) {
+      this.printService.deactivateActiveService(service.key);
+      return;
+    }
+
+    this.printService.updateActiveServices(service.key);
   }
 
 
@@ -62,5 +72,9 @@ export class App {
     this.serviceOpened = false;
     this.selectedService.set(null);
     this.printService.clear();
+  }
+
+  doesServiceContainSideBarItems(s: Service): boolean {
+    return s.sideBarItems.length > 0;
   }
 }

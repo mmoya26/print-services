@@ -88,7 +88,7 @@ export class DetailedPrintService implements OnInit, AfterViewInit {
   }
   
   deactivateService() {
-    this.printService.deactiveteActiveService(this.service()?.key!)
+    this.printService.deactivateActiveService(this.service()?.key!)
     this.backToServices();
   }
 }
