@@ -197,8 +197,27 @@ export class PrintServices {
   private currentSideBarItems: WritableSignal<SideBarItem[]> = signal([]);
   public currentSideBarItems$ = this.currentSideBarItems.asReadonly();
 
+  private activeServices: WritableSignal<ServiceType[]> = signal([]);
+  public activeServices$ = this.activeServices.asReadonly();
+
   setCurrentSideBarItems(sItems: SideBarItem[]) {
+    // This needs a map method to create unique references for each item
+    // otherwise it would refence the services array items directly and make changes to the readonly array
     this.currentSideBarItems.set(sItems.map(item => ({ ...item, processing: false })));
+  }
+
+  updateActiveServices(serviceType: ServiceType) {
+    // Prevent duplicates
+    if (this.activeServices$().includes(serviceType)) {
+      return;
+    }
+
+    this.activeServices.update(services => [...this.activeServices$(), serviceType]);
+    console.log(this.activeServices());
+  }
+
+  deactiveteActiveService(serviceType: ServiceType) {
+    this.activeServices.update(services => services.filter(s => s !== serviceType));
   }
 
   toggleActiveSideBarItemProcessing(sItem: SideBarItem) {
@@ -208,6 +227,10 @@ export class PrintServices {
         item.processing = !item.processing;
       }
     });
+  }
+
+  isServiceActive(service: Service): boolean {
+    return this.activeServices()?.includes(service.key) || false;
   }
 
   clear() {

@@ -80,5 +80,16 @@ export class DetailedPrintService implements OnInit, AfterViewInit {
     
     this.loadSidebarComponent(sItem);
   }
+
+  activateService() {
+    // Change this later in case there is no service (null)
+    this.printService.updateActiveServices(this.service()!.key)
+    this.backToServices();
+  }
+  
+  deactivateService() {
+    this.printService.deactiveteActiveService(this.service()?.key!)
+    this.backToServices();
+  }
 }
 

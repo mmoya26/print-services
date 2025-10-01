@@ -56,6 +56,8 @@ export class App {
     this.selectedService.set(service);
   }
 
+
+  // TODO: Might not need this function at all
   resetService() {
     this.serviceOpened = false;
     this.selectedService.set(null);
