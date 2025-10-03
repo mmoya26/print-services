@@ -1,7 +1,11 @@
 <!-- Header Section -->
-<div class="p-6 flex gap-2 border-b border-[#e4e4e7] bg-gray-50 rounded-tl-lg rounded-tr-lg">
-    <img src="assets/gear.svg" alt="Settings" width="24" height="24" />
-    <h3 class="font-bold text-gray-900 text-2xl">W-2 Active Recipient Services</h3>
+<div class="p-6 flex items-center justify-between gap-2 border-b border-[#e4e4e7] bg-gray-50 rounded-tl-lg rounded-tr-lg">
+    <div class="flex items-center gap-2">
+        <img src="assets/gear.svg" alt="Settings" width="24" height="24" />
+        <h3 class="font-bold text-gray-900 text-2xl">W-2 Active Recipient Services</h3>
+    </div>
+
+    <button class="bg-white border border-gray-300 cursor-pointer px-3 py-3 flex items-center justify-center rounded-full"><span class="pi pi-times"></span></button>
 </div>
 
 <!-- Body Section -->
@@ -12,7 +16,10 @@
 
     <!-- Standard Services -->
     <div>
-        <h4 class="font-medium text-gray-900">Standard Services</h4>
+        <div class="flex items-center gap-2">
+            <h4 class="font-medium text-gray-900">Standard Services</h4>
+            <span class="rounded-full border border-gray-300 px-2.5 py-0.5 font-semibold text-xs">Included</span>
+        </div>
 
         <!-- Standard services cards container -->
         <div>
@@ -40,7 +47,10 @@
 
     <!-- Premium Services -->
     <div class="mt-8">
-        <h4 class="font-medium text-gray-900">Premium Services</h4>
+        <div class="flex items-center gap-2">
+            <h4 class="font-medium text-gray-900">Premium Services</h4>
+            <span class="rounded-full border border-gray-300 px-2.5 py-0.5 font-semibold text-xs">Additional Cost</span>
+        </div>
 
         <!-- Premium services cards container -->
         <div>

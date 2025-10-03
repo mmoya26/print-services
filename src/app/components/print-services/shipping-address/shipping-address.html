@@ -59,7 +59,11 @@
     <div class="flex gap-6 flex-wrap">
         <div class="flex flex-col flex-1 gap-2">
             <label for="state" class="text-sm font-medium">State</label>
-            <input type="text" id="state" name="state" class="border border-gray-300 rounded-md pl-2 py-2" />
+            <select type="text" id="state" name="state" class="border border-gray-300 rounded-md pl-2 py-2"> 
+                @for (state of US_STATES; track $index) {
+                    <option [value]="state">{{state}}</option>
+                }
+            </select>
         </div>
         <div class="flex flex-col flex-1 gap-2">
             <label for="zip-code" class="text-sm font-medium">Zip Code</label>

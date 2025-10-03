@@ -1,19 +1,23 @@
 <!-- Header Section -->
-<div class="p-6 flex flex-col gap-2 border-b border-[#e4e4e7] bg-gray-50 rounded-tl-lg rounded-tr-lg">
-    <button class="w-fit flex items-center justify-center gap-2 text-sm font-semibold cursor-pointer mb-3"
-        (click)="backToServices()">
-        <img src="assets/chevron-left.svg" alt="chevron left icon" class="h-5">
-        Back to Services
-    </button>
-    <div class="flex items-center gap-2">
-        <img src="{{service()?.icon ?? 'assets/gear.svg'}}" alt="Settings" class="h-[18px]" />
-        <h3 class="font-semibold text-gray-900 text-2xl">{{ service()?.name ?? 'Undefined Service'}}</h3>
+<div class="p-6 flex items-center justify-between gap-2 border-b border-[#e4e4e7] bg-gray-50 rounded-tl-lg rounded-tr-lg">
+    <div>
+        <button class="w-fit flex items-center justify-center gap-2 text-sm font-semibold cursor-pointer mb-3"
+            (click)="backToServices()">
+            <img src="assets/chevron-left.svg" alt="chevron left icon" class="h-5">
+            Back to Services
+        </button>
+        <div class="flex items-center gap-2">
+            <img src="{{service()?.icon ?? 'assets/gear.svg'}}" alt="Settings" class="h-[18px]" />
+            <h3 class="font-semibold text-gray-900 text-2xl">{{ service()?.name ?? 'Undefined Service'}}</h3>
 
-        @if (printService.isServiceActive(service()!)) {
-            <p class="bg-emerald-100 text-emerald-600 inset-ring inset-ring-green-600/30 text-xs px-2 py-1 rounded-full font-medium">Active</p>
-        }
+            @if (printService.isServiceActive(service()!)) {
+                <p class="bg-emerald-100 text-emerald-600 inset-ring inset-ring-green-600/30 text-xs px-2 py-1 rounded-full font-medium">Active</p>
+            }
+        </div>
+        <h4 class=" text-sm text-gray-600">{{ service()?.description ?? 'No description available' }}</h4>
     </div>
-    <h4 class=" text-sm text-gray-600">{{ service()?.description ?? 'No description available' }}</h4>
+    <button class="bg-white border border-gray-300 cursor-pointer px-3 py-3 flex items-center justify-center rounded-full"><span class="pi pi-times"></span></button>
+
 </div>
 
 <!-- Main Content -->
