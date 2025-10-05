@@ -1,10 +1,39 @@
 <div class="h-screen bg-black/40 flex items-center justify-center">
   <!-- Card -->
-  <div class="bg-white w-[1150px] h-[90vh] mx-auto rounded-lg overflow-hidden">
-    @if (serviceOpened) {
-      <app-detailed-print-service [service]="selectedService()" (backToServicesEvent)="resetService()"></app-detailed-print-service>
-    } @else {
-      <app-list-of-print-services (editServiceEvent)="editService($event)"></app-list-of-print-services>
+  <div class="bg-white w-[1150px] h-[90vh] mx-auto rounded-lg overflow-hidden relative">
+    @if (!serviceOpened) {
+      <!-- Header Section -->
+      <div
+        class="p-6 flex items-center justify-between gap-2 border-b border-[#e4e4e7] bg-gray-50 rounded-tl-lg rounded-tr-lg">
+        <div class="flex items-center gap-2">
+          <img src="assets/gear.svg" alt="Settings" width="24" height="24" />
+          <h3 class="font-bold text-gray-900 text-2xl">W-2 Active Recipient Services</h3>
+        </div>
+
+        <button
+          class="bg-white border border-gray-300 cursor-pointer px-3 py-3 flex items-center justify-center rounded-full"><span
+            class="pi pi-times"></span></button>
+      </div>
     }
+
+    @if (serviceOpened) {
+    <app-detailed-print-service [service]="selectedService()"
+      (backToServicesEvent)="resetService()"></app-detailed-print-service>
+    } @else {
+    <app-list-of-print-services (editServiceEvent)="editService($event)"></app-list-of-print-services>
+    }
+
+
+    @if (!serviceOpened) {
+      <!-- Footer -->
+      <div class="border-t border-[#e4e4e7] bg-gray-50 p-4 sticky bottom-0 flex items-center justify-between">
+        <p class="text-sm text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae obcaecati ad esse sunt.</p>
+        <div class="flex gap-3">
+          <button class="cursor-pointer py-2 px-4 bg-white border border-gray-300 font-medium text-black rounded-md text-sm">Cancel</button>
+          <button class="cursor-pointer py-2 px-4 text-white bg-black rounded-md text-sm font-semibold">Finish Configuration</button>
+        </div>
+      </div>
+    }
+
   </div>
 </div>

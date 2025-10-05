@@ -220,6 +220,5 @@ export class PrintServices {
 
   clear() {
     this.currentSideBarItems.set([]);
-    console.log(this.currentSideBarItems())
   }
 }
