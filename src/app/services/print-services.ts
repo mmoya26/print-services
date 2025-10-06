@@ -177,6 +177,22 @@ export class PrintServices {
         }
       ],
       category: ServiceCategory.Premium
+    },
+    {
+      key: ServiceType.CustomPrinting,
+      name: 'Custom Printing',
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis corrupti delectus atque quos fuga officiis.',
+      icon: 'assets/printer.svg',
+      sideBarItems: [],
+      category: ServiceCategory.Premium
+    },
+    {
+      key: ServiceType.ReturnMail,
+      name: 'Return Mail',
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis corrupti delectus atque quos fuga officiis.',
+      icon: 'assets/arrow-left-circle.svg',
+      sideBarItems: [],
+      category: ServiceCategory.Premium
     }
   ];
 

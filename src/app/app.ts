@@ -29,7 +29,9 @@ export enum ServiceType {
   PrintExclusions = 'PrintExclusions', // For testing purposes only
   EnvelopeCustomization = 'EnvelopeCustomization', // For testing purposes only
   PriorityProcessing = 'PriorityProcessing', // For testing purposes only
-  CertifiedMail = 'CertifiedMail' // For testing purposes only
+  CertifiedMail = 'CertifiedMail', // For testing purposes only
+  ReturnMail = 'ReturnMail', // For testing purposes only
+  CustomPrinting = 'CustomPrinting' // For testing purposes only
 }
 
 export enum ServiceCategory {
