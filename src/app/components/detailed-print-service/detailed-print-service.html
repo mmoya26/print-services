@@ -1,7 +1,9 @@
 <!-- Header Section -->
-<div class="p-6 flex items-center justify-between gap-2 border-b border-[#e4e4e7] bg-gray-50 rounded-tl-lg rounded-tr-lg">
+<div
+    class="p-6 flex items-center justify-between gap-2 border-b border-[#e4e4e7] bg-gray-50 rounded-tl-lg rounded-tr-lg">
     <div>
-        <button class="w-fit flex items-center gap-2 text-sm font-semibold cursor-pointer rounded-md mb-2 p-2 text-gray-700 hover:bg-gray-400/20 transition-all duration-200"
+        <button
+            class="w-fit flex items-center gap-2 text-sm font-semibold cursor-pointer rounded-md mb-2 p-2 text-gray-700 hover:bg-gray-400/20 transition-all duration-200"
             (click)="backToServices()">
             <i class="pi pi-chevron-left text-gray-900"></i>
             Back to Services
@@ -11,47 +13,64 @@
             <h3 class="font-semibold text-gray-900 text-2xl">{{ service()?.name ?? 'Undefined Service'}}</h3>
 
             @if (printService.isServiceActive(service()!)) {
-                <p class="bg-emerald-100 text-emerald-600 inset-ring inset-ring-green-600/30 text-xs px-2 py-1 rounded-full font-medium">Active</p>
+            <p
+                class="bg-emerald-100 text-emerald-600 inset-ring inset-ring-green-600/30 text-xs px-2 py-1 rounded-full font-medium">
+                Active</p>
             }
         </div>
         <h4 class=" text-sm text-gray-600">{{ service()?.description ?? 'No description available' }}</h4>
     </div>
-    <button class="bg-white border border-gray-300 cursor-pointer px-3 py-3 flex items-center justify-center rounded-full"><span class="pi pi-times text-gray-600"></span></button>
+    <button
+        class="bg-white border border-gray-300 cursor-pointer px-3 py-3 flex items-center justify-center rounded-full"><span
+            class="pi pi-times text-gray-600"></span></button>
 
 </div>
 
 <!-- Main Content -->
-<div class="flex">
+<div class="flex h-[calc(60vh)] ">
     <!-- Side Bar -->
     <aside class="h-full border-r border-[#e4e4e7] bg-gray-50 p-4 w-72">
-        <div class="h-[calc(90vh-180px)] flex flex-col">
+        <div class="flex flex-col">
             <ul class="flex flex-col gap-2">
                 <!-- Change track later -->
                 <!-- Add alt for icon later & to interface -->
                 @for (sideBarItem of sideBarItems(); track sideBarItem.component) {
-                    <li (click)="selectSideBarItem(sideBarItem)"
-                        [class]="'cursor-pointer py-2 px-4 rounded-md text-sm flex items-center gap-3 font-medium ' + (sideBarItem.name === activeSideBarItem?.name ? 'text-white bg-black' : 'text-black bg-transparent')">
-                        <img [src]="sideBarItem.name === activeSideBarItem?.name ? sideBarItem.lightIcon : sideBarItem?.darkIcon" alt="" 
-                        class="h-4 w-4">{{ sideBarItem.name }} 
+                <li (click)="selectSideBarItem(sideBarItem)"
+                    [class]="'cursor-pointer py-2 px-4 rounded-md text-sm flex items-center gap-3 font-medium ' + (sideBarItem.name === activeSideBarItem?.name ? 'text-white bg-black' : 'text-black bg-transparent')">
+                    <img [src]="sideBarItem.name === activeSideBarItem?.name ? sideBarItem.lightIcon : sideBarItem?.darkIcon"
+                        alt="" class="h-4 w-4">{{ sideBarItem.name }}
 
-                        <i [class]="'pi pi-spin pi-spinner' + (sideBarItem.processing ? '' : ' hidden')"></i>
-                    </li>
+                    <i [class]="'pi pi-spin pi-spinner' + (sideBarItem.processing ? '' : ' hidden')"></i>
+                </li>
                 }
             </ul>
 
             <div class="flex flex-col mt-auto gap-4">
-                @if (printService.isServiceActive(service()!)) {
-                    <button (click)="deactivateService()" class="border border-red-300 text-red-400 font-medium py-2 px-4 rounded-md text-sm cursor-pointer">Deactive Service</button>
-                } @else {
-                    <button (click)="activateService()" class="cursor-pointer py-2 px-4 text-white bg-black rounded-md text-sm font-semibold">Activate
-                    Service</button>
-                }
+
             </div>
         </div>
     </aside>
 
     <!-- Dynamic Content -->
-    <div class="overflow-y-auto w-full p-6 h-[calc(90vh-160px)]">
+    <div class="overflow-y-auto w-full p-6 ">
         <ng-container #dynamicContent></ng-container>
+    </div>
+</div>
+
+<!-- Footer -->
+<div class="border-t border-[#e4e4e7] bg-gray-50 p-4 sticky bottom-0 flex items-center justify-between">
+    <p class="text-sm text-gray-600">Configuring {{service()?.name}}</p>
+    <div class="flex gap-3 items-center">
+        <button
+            class="cursor-pointer py-2 px-4 bg-white border border-gray-300 font-medium text-black rounded-md text-sm">Cancel</button>
+        @if (printService.isServiceActive(service()!)) {
+        <button (click)="deactivateService()"
+            class="border border-red-300 text-red-400 font-medium py-2 px-4 rounded-md text-sm cursor-pointer">Deactive
+            Service</button>
+        } @else {
+        <button (click)="activateService()"
+            class="cursor-pointer py-2 px-4 text-white bg-black rounded-md text-sm font-semibold">Activate
+            Service</button>
+        }
     </div>
 </div>
