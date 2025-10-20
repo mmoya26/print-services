@@ -14,7 +14,8 @@
         <div>
             <div class="flex flex-wrap gap-4 mt-4">
                 @for (s of standardServices; track s.key) {
-                    <div class="w-full md:basis-[calc(50%-0.5rem)] border border-gray-300 rounded-lg p-4 hover:shadow-lg transition-shadow cursor-pointer flex justify-center gap-3 relative bg-[#f9fafb]"
+                    <div [class]="`w-full md:basis-[calc(50%-0.5rem)] border rounded-lg p-4 hover:shadow-lg transition-shadow cursor-pointer flex justify-center gap-3 relative bg-[#f9fafb]
+                    ${isServiceActive(s) ? 'border-emerald-600' : 'border-gray-300 '}`"
                         (click)="editService(s)">
                         <div
                             class="w-10 h-10 bg-white border border-[#e4e4e7] rounded-lg flex items-center justify-center flex-shrink-0">
@@ -26,7 +27,7 @@
                         </div>
 
                         @if (isServiceActive(s)) {
-                            <i class="p-2 text-xs text-emerald-600 font-bold bg-white border border-gray-300 rounded-full h-fit pi pi-check absolute -top-2 -right-3"></i>
+                            <i class="p-2 text-xs text-emerald-600 font-bold bg-white border border-emerald-600 rounded-full h-fit pi pi-check absolute -top-2 -right-3"></i>
                         }
                     </div>
                 }
@@ -45,7 +46,8 @@
         <div>
             <div class="flex flex-wrap gap-4 mt-4">
                 @for (s of premiumServices; track s.key) {
-                    <div class="w-full md:basis-[calc(50%-0.5rem)] border border-gray-300 rounded-lg p-4 hover:shadow-lg transition-shadow cursor-pointer flex justify-center gap-3 relative bg-[#f9fafb]"
+                    <div [class]="`w-full md:basis-[calc(50%-0.5rem)] border rounded-lg p-4 hover:shadow-lg transition-shadow cursor-pointer flex justify-center gap-3 relative bg-[#f9fafb] 
+                    ${isServiceActive(s) ? 'border-emerald-600' : 'border-gray-300 '}`"
                         (click)="editService(s)">
                         <div
                             class="w-10 h-10 bg-white border border-[#e4e4e7] rounded-lg flex items-center justify-center flex-shrink-0">
@@ -56,7 +58,7 @@
                             <p class="text-sm text-gray-600">{{s.description}}</p>
                         </div>
                         @if (isServiceActive(s)) {
-                            <i class="p-2 text-xs text-emerald-600 font-bold bg-white border border-gray-300 rounded-full h-fit pi pi-check absolute -top-2 -right-3"></i>
+                            <i class="p-2 text-xs text-emerald-600 font-bold bg-white border border-emerald-600 rounded-full h-fit pi pi-check absolute -top-2 -right-3"></i>
                         }
                     </div>
                 }
