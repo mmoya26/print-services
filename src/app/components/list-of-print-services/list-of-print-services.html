@@ -15,7 +15,8 @@
             <ul class="flex flex-wrap gap-4 mt-4">
                 @for (s of standardServices; track s.key; let i = $index) {
                     <li [animate.enter]="'enter-animation'" [style.animation-delay.ms]="i * 25" 
-                    [class]="`w-full md:basis-[calc(50%-0.5rem)] border rounded-lg p-4 hover:shadow-lg transition-shadow cursor-pointer flex justify-center gap-3 relative bg-[#f9fafb]
+                    [class]="`w-full md:basis-[calc(50%-0.5rem)] border rounded-lg p-4 hover:-translate-y-1 hover:shadow-lg 
+                    transition duration-250 transform cursor-pointer flex justify-center gap-3 relative bg-[#f9fafb]
                     ${isServiceActive(s) ? 'border-emerald-600' : 'border-gray-300 '}`"
                         (click)="editService(s)">
                         <div
@@ -47,7 +48,8 @@
         <div>
             <ul class="flex flex-wrap gap-4 mt-4">
                 @for (s of premiumServices; track s.key; let i = $index) {
-                    <li [animate.enter]="'enter-animation'" [style.animation-delay.ms]="i * 25" [class]="`w-full md:basis-[calc(50%-0.5rem)] border rounded-lg p-4 hover:shadow-lg transition-shadow cursor-pointer flex justify-center gap-3 relative bg-[#f9fafb] 
+                    <li [animate.enter]="'enter-animation'" [style.animation-delay.ms]="i * 25" [class]="`w-full md:basis-[calc(50%-0.5rem)] border rounded-lg p-4 
+                    hover:-translate-y-1 hover:shadow-lg transition duration-250 transform cursor-pointer flex justify-center gap-3 relative bg-[#f9fafb]
                     ${isServiceActive(s) ? 'border-emerald-600' : 'border-gray-300 '}`"
                         (click)="editService(s)">
                         <div
