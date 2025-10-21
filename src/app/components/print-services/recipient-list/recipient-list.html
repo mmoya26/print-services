@@ -15,10 +15,9 @@
         <!-- Buttons -->
         <div class="m-3 flex gap-3">
             <label
-                (click)="uploadFile()"
                 class="flex justify-center items-center gap-3 text-sm rounded-md px-3 h-9 font-medium cursor-pointer ring-offset-1 ring-1 ring-gray-300 hover:ring-gray-400 transition-colors">
                 <img src="assets/upload-d.svg" class=" h-4" alt="Upload Icon" />
-                <!-- <input type="file" hidden /> -->
+                <input type="file" hidden (change)="uploadFile($event)" />
                 Choose a file
             </label>
 
@@ -39,33 +38,28 @@
         id="manual-entry" placeholder="Enter recipient information, one per line..."></textarea>
 </div>
 
-<!-- Active Recipient List -->
+<!-- Uploaded Recipient List -->
 <div class="mt-6">
-    <h3 class="font-medium text-gray-900">Active Recipient Lists</h3>
+    <h3 class="font-medium text-gray-900">Uploaded Recipient Lists</h3>
     <div class="border border-gray-300 rounded-lg divide-y divide-gray-300 mt-4">
-        <div class="p-4 flex items-center justify-between hover:bg-gray-50">
-            <div class="flex flex-col gap-2">
-                <div class="flex gap-2">
-                    <h5 class="font-medium text-gray-900">Q4 2024 Recipients</h5>
-                    <p class="bg-gray-100  text-xs px-2 py-1 rounded-full font-medium">Active</p>
-                </div>
-                <p class="text-sm text-gray-500 mt-1">1,247 recipients • Updated 2 days ago</p>
-            </div>
-            <div>
-                <i class="pi pi-download cursor-pointer p-2"></i>
-            </div>
-        </div>
 
-        <div class="p-4 flex items-center justify-between hover:bg-gray-50">
-            <div class="flex flex-col gap-2">
-                <div class="flex gap-2">
-                    <h5 class="font-medium text-gray-900">Q3 2024 Recipients</h5>
+        @for (item of recipientLists; track item.id) {
+            <div class="p-4 flex items-center justify-between hover:bg-gray-50">
+                <div class="flex flex-col gap-2">
+                    <div class="flex gap-2">
+                        <h5 class="font-medium text-gray-900">{{item.name}}</h5>
+
+                        @if (item.isActive) {
+                            <p class="bg-gray-100  text-xs px-2 py-1 rounded-full font-medium">Active</p>
+                        }
+
+                    </div>
+                    <p class="text-sm text-gray-500 mt-1">{{item.numberOfRecipients | number}} recipients • Uploaded {{item.dateUploaded | timeAgo}}</p>
                 </div>
-                <p class="text-sm text-gray-500 mt-1">856 recipients • Updated 1 week ago</p>
+                <div>
+                    <i class="pi pi-download cursor-pointer p-2"></i>
+                </div>
             </div>
-            <div>
-                <i class="pi pi-download cursor-pointer p-2"></i>
-            </div>
-        </div>
+        }
     </div>
 </div>
