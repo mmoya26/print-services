@@ -53,6 +53,8 @@ export class App {
 
   printService = inject(PrintServices);
 
+  modalIsOpen = signal(false);
+
   editService(service: Service) {
     if (this.doesServiceContainSideBarItems(service)) {
       this.serviceOpened = true;

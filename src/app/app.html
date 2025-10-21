@@ -1,39 +1,45 @@
-<div class="h-screen bg-black/40 flex items-center justify-center">
-  <!-- Card -->
-  <div class="bg-white w-[1150px] mx-auto rounded-lg overflow-hidden relative">
-    @if (!serviceOpened) {
+@if (modalIsOpen()) {
+  <div [class]="` h-screen bg-black/40 flex items-center justify-center`">
+    <!-- Card -->
+    <div class="bg-white w-[1150px] mx-auto rounded-lg overflow-hidden relative" [animate.enter]="'enter-animation'">
+      @if (!serviceOpened) {
       <!-- Header Section -->
-      <div
-        class="p-6 flex items-center justify-between gap-2 border-b border-[#e4e4e7] bg-gray-50 rounded-tl-lg rounded-tr-lg">
-        <div class="flex items-center gap-2">
-          <img src="assets/gear.svg" alt="Settings" width="24" height="24" />
-          <h3 class="font-bold text-gray-900 text-2xl">W-2 Active Recipient Services</h3>
+        <div
+          class="p-6 flex items-center justify-between gap-2 border-b border-[#e4e4e7] bg-gray-50 rounded-tl-lg rounded-tr-lg">
+          <div class="flex items-center gap-2">
+            <img src="assets/gear.svg" alt="Settings" width="24" height="24" />
+            <h3 class="font-bold text-gray-900 text-2xl">W-2 Active Recipient Services</h3>
+          </div>
+  
+          <button
+            class="bg-white border border-gray-300 cursor-pointer px-3 py-3 flex items-center justify-center rounded-full" (click)="modalIsOpen.set(false)"><span
+              class="pi pi-times text-gray-600"></span></button>
         </div>
-
-        <button
-          class="bg-white border border-gray-300 cursor-pointer px-3 py-3 flex items-center justify-center rounded-full"><span
-            class="pi pi-times text-gray-600"></span></button>
-      </div>
-    }
-
-    @if (serviceOpened) {
-    <app-detailed-print-service [service]="selectedService()"
-      (backToServicesEvent)="resetService()"></app-detailed-print-service>
-    } @else {
-    <app-list-of-print-services (editServiceEvent)="editService($event)"></app-list-of-print-services>
-    }
-
-
-    @if (!serviceOpened) {
-      <!-- Footer -->
-      <div class="border-t border-[#e4e4e7] bg-gray-50 p-4 sticky bottom-0 flex items-center justify-between">
-        <p class="text-sm text-gray-600">Last submitted on 10/06/2025 13:27 PM EST by John Doe</p>
-        <div class="flex gap-3 items-center">
-          <button class="cursor-pointer py-2 px-4 bg-white border border-gray-300 font-medium text-black rounded-md text-sm">Cancel</button>
-          <button class="cursor-pointer py-2 px-4 text-white bg-black rounded-md text-sm font-semibold">Submit Configuration</button>
+      }
+  
+      @if (serviceOpened) {
+      <app-detailed-print-service [service]="selectedService()"
+        (backToServicesEvent)="resetService()"></app-detailed-print-service>
+      } @else {
+      <app-list-of-print-services (editServiceEvent)="editService($event)"></app-list-of-print-services>
+      }
+  
+  
+      @if (!serviceOpened) {
+        <!-- Footer -->
+        <div class="border-t border-[#e4e4e7] bg-gray-50 p-4 sticky bottom-0 flex items-center justify-between">
+          <p class="text-sm text-gray-600">Last submitted on 10/06/2025 13:27 PM EST by John Doe</p>
+          <div class="flex gap-3 items-center">
+            <button class="cursor-pointer py-2 px-4 bg-white border border-gray-300 font-medium text-black rounded-md text-sm" (click)="modalIsOpen.set(false)">Cancel</button>
+            <button class="cursor-pointer py-2 px-4 text-white bg-black rounded-md text-sm font-semibold">Submit Configuration</button>
+          </div>
         </div>
-      </div>
-    }
-
+      }
+  
+    </div>
   </div>
-</div>
+} @else {
+  <div class="h-screen flex items-center justify-center">
+    <button (click)="modalIsOpen.set(true)" class="cursor-pointer py-2 px-4 text-white bg-black rounded-md text-sm font-semibold">Open W-2 Services Modal</button>
+  </div>
+}
