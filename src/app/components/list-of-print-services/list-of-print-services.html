@@ -1,71 +1,98 @@
 <div class="flex flex-col p-6 h-[calc(70vh)] overflow-y-auto">
-    <h3 class="text-gray-900 font-bold mb-2">Available Services</h3>
-    <p class="text-sm text-gray-600 mb-6">Configure services for W-2 Active Recipients at Acme Corporation. Click on a
-        service to customize its settings.</p>
+  <h3 class="text-gray-900 font-bold mb-2">Available Services</h3>
+  <p class="text-sm text-gray-600 mb-6">
+    Configure services for W-2 Active Recipients at Acme Corporation. Click on a service to
+    customize its settings.
+  </p>
 
-    <!-- Standard Services -->
+  <!-- Standard Services -->
+  <div>
+    <div class="flex items-center gap-2">
+      <h4 class="font-medium text-gray-900">Standard Services</h4>
+      <span class="rounded-full border border-gray-300 px-2.5 py-0.5 font-semibold text-xs"
+        >Included</span
+      >
+      <span class="text-gray-600 text-sm ml-auto"
+        >{{activeStandardServicesCount()}} {{activeStandardServicesCount() === 1 ? 'service' :
+        'services'}} activated</span
+      >
+    </div>
+
+    <!-- Standard services cards container -->
     <div>
-        <div class="flex items-center gap-2">
-            <h4 class="font-medium text-gray-900">Standard Services</h4>
-            <span class="rounded-full border border-gray-300 px-2.5 py-0.5 font-semibold text-xs">Included</span>
-        </div>
-
-        <!-- Standard services cards container -->
-        <div>
-            <ul class="flex flex-wrap gap-4 mt-4">
-                @for (s of standardServices; track s.key; let i = $index) {
-                    <li [animate.enter]="'enter-animation'" [style.animation-delay.ms]="i * 25" 
-                    [class]="`w-full md:basis-[calc(50%-0.5rem)] border rounded-lg p-4 hover:-translate-y-1 hover:shadow-lg 
+      <ul class="flex flex-wrap gap-4 mt-4">
+        @for (s of standardServices(); track s.key; let i = $index) {
+        <li
+          [animate.enter]="'enter-animation'"
+          [style.animation-delay.ms]="i * 25"
+          [class]="`w-full md:basis-[calc(50%-0.5rem)] border rounded-lg p-4 hover:-translate-y-1 hover:shadow-lg
                     transition duration-250 transform cursor-pointer flex justify-center gap-3 relative bg-[#f9fafb]
                     ${isServiceActive(s) ? 'border-emerald-600' : 'border-gray-300 '}`"
-                        (click)="editService(s)">
-                        <div
-                            class="w-10 h-10 bg-white border border-[#e4e4e7] rounded-lg flex items-center justify-center flex-shrink-0">
-                            <img src="{{ s.icon }}" alt="Truck Icon" class="h-[20px] w-[20px] text-gray-600" />
-                        </div>
-                        <div>
-                            <h5 class="font-medium text-gray-900 mb-2">{{s.name}}</h5>
-                            <p class="text-sm text-gray-600">{{s.description}}</p>
-                        </div>
+          (click)="editService(s)"
+        >
+          <div
+            class="w-10 h-10 bg-white border border-[#e4e4e7] rounded-lg flex items-center justify-center flex-shrink-0"
+          >
+            <img src="{{ s.icon }}" alt="Truck Icon" class="h-[20px] w-[20px] text-gray-600" />
+          </div>
+          <div>
+            <h5 class="font-medium text-gray-900 mb-2">{{s.name}}</h5>
+            <p class="text-sm text-gray-600">{{s.description}}</p>
+          </div>
 
-                        @if (isServiceActive(s)) {
-                            <i class="p-2 text-xs text-emerald-600 font-bold bg-white border border-emerald-600 rounded-full h-fit pi pi-check absolute -top-2 -right-3"></i>
-                        }
-                    </li>
-                }
-            </ul>
-        </div>
+          @if (isServiceActive(s)) {
+          <i
+            class="p-2 text-xs text-emerald-600 font-bold bg-white border border-emerald-600 rounded-full h-fit pi pi-check absolute -top-2 -right-3"
+          ></i>
+          }
+        </li>
+        }
+      </ul>
+    </div>
+  </div>
+
+  <!-- Premium Services -->
+  <div class="mt-8">
+    <div class="flex items-center gap-2">
+      <h4 class="font-medium text-gray-900">Premium Services</h4>
+      <span class="rounded-full border border-gray-300 px-2.5 py-0.5 font-semibold text-xs"
+        >Additional Cost</span
+      >
+      <span class="text-gray-600 text-sm ml-auto"
+        >{{activePremiumServicesCount()}} {{activePremiumServicesCount() === 1 ? 'service' :
+        'services'}} activated</span
+      >
     </div>
 
-    <!-- Premium Services -->
-    <div class="mt-8">
-        <div class="flex items-center gap-2">
-            <h4 class="font-medium text-gray-900">Premium Services</h4>
-            <span class="rounded-full border border-gray-300 px-2.5 py-0.5 font-semibold text-xs">Additional Cost</span>
-        </div>
-
-        <!-- Premium services cards container -->
-        <div>
-            <ul class="flex flex-wrap gap-4 mt-4">
-                @for (s of premiumServices; track s.key; let i = $index) {
-                    <li [animate.enter]="'enter-animation'" [style.animation-delay.ms]="i * 25" [class]="`w-full md:basis-[calc(50%-0.5rem)] border rounded-lg p-4 
+    <!-- Premium services cards container -->
+    <div>
+      <ul class="flex flex-wrap gap-4 mt-4">
+        @for (s of premiumServices(); track s.key; let i = $index) {
+        <li
+          [animate.enter]="'enter-animation'"
+          [style.animation-delay.ms]="i * 25"
+          [class]="`w-full md:basis-[calc(50%-0.5rem)] border rounded-lg p-4
                     hover:-translate-y-1 hover:shadow-lg transition duration-250 transform cursor-pointer flex justify-center gap-3 relative bg-[#f9fafb]
                     ${isServiceActive(s) ? 'border-emerald-600' : 'border-gray-300 '}`"
-                        (click)="editService(s)">
-                        <div
-                            class="w-10 h-10 bg-white border border-[#e4e4e7] rounded-lg flex items-center justify-center flex-shrink-0">
-                            <img src="{{ s.icon }}" alt="Truck Icon" class="h-[20px] w-[20px] text-gray-600" />
-                        </div>
-                        <div>
-                            <h5 class="font-medium text-gray-900 mb-2">{{s.name}}</h5>
-                            <p class="text-sm text-gray-600">{{s.description}}</p>
-                        </div>
-                        @if (isServiceActive(s)) {
-                            <i class="p-2 text-xs text-emerald-600 font-bold bg-white border border-emerald-600 rounded-full h-fit pi pi-check absolute -top-2 -right-3"></i>
-                        }
-                    </li>
-                }
-            </ul>
-        </div>
+          (click)="editService(s)"
+        >
+          <div
+            class="w-10 h-10 bg-white border border-[#e4e4e7] rounded-lg flex items-center justify-center flex-shrink-0"
+          >
+            <img src="{{ s.icon }}" alt="Truck Icon" class="h-[20px] w-[20px] text-gray-600" />
+          </div>
+          <div>
+            <h5 class="font-medium text-gray-900 mb-2">{{s.name}}</h5>
+            <p class="text-sm text-gray-600">{{s.description}}</p>
+          </div>
+          @if (isServiceActive(s)) {
+          <i
+            class="p-2 text-xs text-emerald-600 font-bold bg-white border border-emerald-600 rounded-full h-fit pi pi-check absolute -top-2 -right-3"
+          ></i>
+          }
+        </li>
+        }
+      </ul>
     </div>
+  </div>
 </div>
