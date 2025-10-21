@@ -41,10 +41,10 @@
 <!-- Uploaded Recipient List -->
 <div class="mt-6">
     <h3 class="font-medium text-gray-900">Uploaded Recipient Lists</h3>
-    <div class="border border-gray-300 rounded-lg divide-y divide-gray-300 mt-4">
+    <ul class="border border-gray-300 rounded-lg divide-y divide-gray-300 mt-4">
 
         @for (item of recipientLists; track item.id) {
-            <div class="p-4 flex items-center justify-between hover:bg-gray-50">
+            <li class="p-4 flex items-center justify-between hover:bg-gray-50">
                 <div class="flex flex-col gap-2">
                     <div class="flex gap-2">
                         <h5 class="font-medium text-gray-900">{{item.name}}</h5>
@@ -59,7 +59,7 @@
                 <div>
                     <i class="pi pi-download cursor-pointer p-2"></i>
                 </div>
-            </div>
+            </li>
         }
-    </div>
+    </ul>
 </div>
