@@ -1,5 +1,4 @@
 .enter-animation {
-    opacity: 0;
     animation: slide-fade 0.5s;
 }
 
